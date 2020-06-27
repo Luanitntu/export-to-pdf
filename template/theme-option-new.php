@@ -79,12 +79,8 @@
 
 
 ?>
-
-
-
 <style>
-
-   .tablenav-pages{
+    .tablenav-pages{
 
     color: #555;
 
@@ -153,11 +149,7 @@
    }
 
 </style>
-
 <h2>Order's Report</h2>
-
-
-
 <?php
 
    global $wpdb;   
@@ -189,78 +181,35 @@
 
 
 ?>
-
 <form action="" method="post">
-
-   <div class="action">
-
-      <input type="submit" value="Delete" name="submit" id="doaction" class="button action" onclick="return confirm('Are you sure you want to delete this item?');">
-
-      <?php 
+    <div class="action">
+        <input type="submit" value="Delete" name="submit" id="doaction" class="button action" onclick="return confirm('Are you sure you want to delete this item?');">
+        <?php 
 
          $status = $wpdb->get_results("SELECT * From  wp_order_status",OBJECT);
 
          foreach($status as $statu){
 
        ?>
-
-      <input type="submit" value="<?php echo $statu->name; ?>" name="submit" id="doaction" class="button action <?php echo $statu->name; ?>">
-
-      <?php } ?>
-
-   </div>
-
-<table style='width:99%; margin-top:20px;' class='wp-list-table widefat fixed striped posts'>
-
-   <thead>
-
-
-
-      <tr style='width:100%; '>
-
-
-
-               <td style='width:15px;'></td>
-
-
-
-               <td style='width:130px;'>Customer's Name</td>
-
-
-
-               <td style='width:100px;'>Phone</td>
-
-
-
-               <td style='width:100px;'>Order Type</td>
-
-
-
-               <td style='width:100px;'>Ready Time</td>
-
-               <td style='width:150px;'>Created Time</td>
-
-               <td style='width:130px;'>Payment method</td>
-
-               <td style='width:100px;'>Total </td>
-
-               <td style='width:120px;'>Action </td>  
-
-                        
-
-                                <!--<td style='width:100px;'>Print</td>-->
-
-
-
+        <input type="submit" value="<?php echo $statu->name; ?>" name="submit" id="doaction" class="button action <?php echo $statu->name; ?>">
+        <?php } ?>
+    </div>
+    <table style='width:99%; margin-top:20px;' class='wp-list-table widefat fixed striped posts'>
+        <thead>
+            <tr style='width:100%; '>
+                <td style='width:15px;'></td>
+                <td style='width:130px;'>Customer's Name</td>
+                <td style='width:100px;'>Phone</td>
+                <td style='width:100px;'>Order Type</td>
+                <td style='width:100px;'>Ready Time</td>
+                <td style='width:150px;'>Created Time</td>
+                <td style='width:130px;'>Payment method</td>
+                <td style='width:100px;'>Total </td>
+                <td style='width:120px;'>Action </td>
+                <!--<td style='width:100px;'>Print</td>-->
             </tr>
-
-
-
-   </thead>       
-
-
-
-<?php
+        </thead>
+        <?php
 
       foreach($result as $row){
 
@@ -276,51 +225,34 @@
 
          $total = ($total*8.1)/100+$total;
 
-         ?> 
-
-
-
-            <tr style='width:100%; border:1px solid #000;  margin-top: 20px; overflow: hidden;'>
-
-
-
-               <td style='width:10px; '><input type="checkbox" value="<?php echo $row->id;?>" name="choose[]" class="<?php echo 'status'.$row->order_status; ?>"></td>
-
-
-
-               <td style='width:100px;'><?php echo $row->name; ?></td>
-
-
-
-               <td style='width:100px;'><?php echo $row->tel; ?></td>
-
-
-
-               <td style='width:150px;'><?php echo $row->order_type; ?></td>
-
-
-
-               <td style='width:150px;'><?php echo $row->ready_time; ?></td>
-
-
-
-               <td style='width:100px;'><?php echo $row->created; ?></td>
-
-
-
-               <td style='width:100px;'><?php echo $row->payment; ?></td>
-
-               <td><?php echo "$".number_format((float)$total, 2, '.', ''); ?></td>
-
-               <td style='width:100px;'><a href="<?php echo plugin_dir_url( __FILE__ ).'pdf.php?id='.$row->id; ?>" TARGET="_blank">Export PDF & Print</a></td>
-
-               <!--<td style='width:100px;'><a href="<?php echo plugin_dir_url( __FILE__ ).'print.php?id='.$row->id.'&print=true'; ?>" TARGET="_blank">Print</a></td>-->
-
-            </tr>
-
-
-
-<?php
+         ?>
+        <tr style='width:100%; border:1px solid #000;  margin-top: 20px; overflow: hidden;'>
+            <td style='width:10px; '><input type="checkbox" value="<?php echo $row->id;?>" name="choose[]" class="<?php echo 'status'.$row->order_status; ?>"></td>
+            <td style='width:100px;'>
+                <?php echo $row->name; ?>
+            </td>
+            <td style='width:100px;'>
+                <?php echo $row->tel; ?>
+            </td>
+            <td style='width:150px;'>
+                <?php echo $row->order_type; ?>
+            </td>
+            <td style='width:150px;'>
+                <?php echo $row->ready_time; ?>
+            </td>
+            <td style='width:100px;'>
+                <?php echo $row->created; ?>
+            </td>
+            <td style='width:100px;'>
+                <?php echo $row->payment; ?>
+            </td>
+            <td>
+                <?php echo "$".number_format((float)$total, 2, '.', ''); ?>
+            </td>
+            <td style='width:100px;'><a href="<?php echo plugin_dir_url( __FILE__ ).'pdf.php?id='.$row->id; ?>" TARGET="_blank">Export PDF & Print</a></td>
+            <!--<td style='width:100px;'><a href="<?php echo plugin_dir_url( __FILE__ ).'print.php?id='.$row->id.'&print=true'; ?>" TARGET="_blank">Print</a></td>-->
+        </tr>
+        <?php
 
 
 
@@ -331,22 +263,10 @@
       }
 
 ?>
-
-
-
-         </table>
-
+    </table>
 </form>
-
-
-
-
-
-
-
-            <div class="tablenav bottom">
-
-            <!-- <div class="alignleft actions bulkactions">
+<div class="tablenav bottom">
+    <!-- <div class="alignleft actions bulkactions">
 
                      <label for="bulk-action-selector-bottom" class="screen-reader-text">Select bulk action</label><select name="action2" id="bulk-action-selector-bottom">
 
@@ -361,74 +281,49 @@
             <input id="doaction2" class="button action" value="Apply" type="submit">
 
                   </div> -->
-
-                        <div class="alignleft actions">
-
-                  </div>
-
-            <?php if($count_page > 1): ?>      
-
-            <div class="tablenav-pages"><span class="displaying-num"><?php echo $count; ?> items</span>
-
-               <?php if($paged==1){ ?>
-
-            <span class="pagination-links"><span class="tablenav-pages-navspan" aria-hidden="true">«</span>
-
+    <div class="alignleft actions">
+    </div>
+    <?php if($count_page > 1): ?>
+    <div class="tablenav-pages"><span class="displaying-num">
+            <?php echo $count; ?> items</span>
+        <?php if($paged==1){ ?>
+        <span class="pagination-links"><span class="tablenav-pages-navspan" aria-hidden="true">«</span>
             <span class="tablenav-pages-navspan" aria-hidden="true">‹</span>
-
-             <?php
+            <?php
 
              }else{
 
                $lastpage = $paged -1;
 
              ?>
-
-             <a class="next-page" href="<?php echo admin_url( 'admin.php?page=order-report' );?>"><span class="screen-reader-text">Next page</span><span aria-hidden="true">«</span></a>
-
+            <a class="next-page" href="<?php echo admin_url( 'admin.php?page=order-report' );?>"><span class="screen-reader-text">Next page</span><span aria-hidden="true">«</span></a>
             <a class="last-page" href="<?php echo admin_url('admin.php?page=order-report&paged='. $lastpage);?>"><span class="screen-reader-text">Last page</span><span aria-hidden="true">‹</span></a></span>
-
-             <?php
+        <?php
 
           }
 
           ?>
-
-            <span class="screen-reader-text">Current Page</span><span id="table-paging" class="paging-input"><?php echo $paged; ?> of <span class="total-pages"><?php echo $count_page; ?></span></span>
-
-            <?php if($paged==$count_page){ ?>
-
-            <span class="pagination-links"><span class="tablenav-pages-navspan" aria-hidden="true">›</span>
-
+        <span class="screen-reader-text">Current Page</span><span id="table-paging" class="paging-input">
+            <?php echo $paged; ?> of <span class="total-pages">
+                <?php echo $count_page; ?></span></span>
+        <?php if($paged==$count_page){ ?>
+        <span class="pagination-links"><span class="tablenav-pages-navspan" aria-hidden="true">›</span>
             <span class="tablenav-pages-navspan" aria-hidden="true">»</span>
-
-             <?php
+            <?php
 
              }else{
 
                $nextpage = $paged+1;
 
              ?>
-
             <a class="next-page" href="<?php echo admin_url( 'admin.php?page=order-report&paged='.$nextpage );?>"><span class="screen-reader-text">Next page</span><span aria-hidden="true">›</span></a>
-
             <a class="last-page" href="<?php echo admin_url( 'admin.php?page=order-report&paged='.$count_page);?>"><span class="screen-reader-text">Last page</span><span aria-hidden="true">»</span></a></span>
-
-            <?php
+        <?php
 
           }
 
           ?>
-
-         </div>
-
-      <?php endif; ?>
-
-      <br class="clear">
-
-      </div>
-
-
-
-
-
+    </div>
+    <?php endif; ?>
+    <br class="clear">
+</div>
